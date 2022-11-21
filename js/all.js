@@ -68,6 +68,14 @@ Vue.createApp({
             ]
         }
     }, methods: {
+        minus(product) {
+            product.amountShow--;
+            product.amountShow = (product.amountShow < 1) ? 0 : product.amountShow
+        },
+        plus(product) {
+            product.amountShow++;
+            product.amountShow = (product.amountShow > 9) ? 9 : product.amountShow
+        },
         addInput() {
             this.input.push(this.chat)
             this.chat = '';
@@ -78,6 +86,13 @@ Vue.createApp({
         async go() {
             await this.addInput();
             await this.h();
+        }
+    }, computed: {
+        sub() {
+            return this.products.map(data => data.price * data.amountShow)
+        },
+        total() {
+            return this.sub.reduce((a, b) => a + b)
         }
     }
 }).mount("#app");

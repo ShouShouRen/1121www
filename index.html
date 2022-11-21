@@ -130,7 +130,7 @@
                 <div class="row pt-lg-5 pt-4 justify-content-center align-items-center">
                     <p class="col-8 pb-lg-5 pb-4 text-center">
                         本網站結合疾病特案CAA管制署、美國CDC疾管局、BSN疾病管理局、臨床病學史、綜合外媒報導等各大資訊平台整合後，提供最新資訊及正確防疫觀念給所需的人</p>
-                    <div class="col-lg-6 col-11">
+                    <div class="col-lg-6 col-11 order-lg-0 order-1">
                         <div class="accordion" id="first">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
@@ -200,8 +200,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-11">
-                        <div id="newscarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="col-lg-6 col-11 order-lg-1 order-0">
+                        <div id="newscarousel" class="carousel slide mb-lg-0 mb-5" data-bs-ride="carousel">
                             <div class="carousel-inner" role="listbox">
                                 <div class="carousel-item active">
                                     <img src="./img/news-a.jpg" class="w-100 d-block" alt="First slide">
@@ -282,7 +282,8 @@
                                 <div class="d-flex justify-content-between py-3">
                                     <h4>{{product.title}}</h4>
                                     <div>
-                                        <button class="btn btn-primary btn-sm">加入溝物車</button>
+                                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#shopcart" @click="plus(product)">加入溝物車</button>
                                     </div>
                                 </div>
                             </div>
@@ -318,17 +319,17 @@
                                         <input type="text" class="form-control">
                                     </div>
                                     <div class="m-4">
-                                        <label for="" class="pb-2 h4">姓名：</label>
+                                        <label for="" class="pb-2 h4">地址：</label>
                                         <input type="email" class="form-control">
                                     </div>
                                     <div class="m-4">
-                                        <label for="" class="pb-2 h4">姓名：</label>
+                                        <label for="" class="pb-2 h4">留下您的意見：</label>
                                         <textarea class="form-control"></textarea>
                                     </div>
                                 </form>
                             </div>
                             <div class="text-center mt-2"><button class="btn btn-outline-primary"
-                                    id="sontactsubmit">確認送出</button></div>
+                                    id="contactsubmit">確認送出</button></div>
                         </div>
                     </div>
                 </div>
@@ -341,6 +342,53 @@
         <div class="gotop">
             <p>TOP</p>
         </div>
+        <!-- Modal -->
+        <div class="modal fade" id="shopcart" tabindex="-1" role="dialog" aria-labelledby="modalTitleId"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalTitleId">購物車</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4 col-6 text-center" v-for="product in products">
+                                    <img :src="product.img" class="w-100 object-cover rounded-4" height="140" alt="">
+                                    <div class="p-1">
+                                        <h4>{{product.title}}</h4>
+                                        <p class="text-red">${{product.price}}</p>
+                                    </div>
+                                    <div class="d-flex justify-content-evenly p-1">
+                                        <button class="btn btn-primary btn-sm" @click="minus(product)">-</button>
+                                        <input type="text" class="text-center form-control w-50"
+                                            v-model="product.amountShow">
+                                        <button class="btn btn-primary btn-sm" @click="plus(product)">+</button>
+                                    </div>
+                                </div>
+                                <h4 class="text-red text-center p-3">總共：${{total}}元</h4>
+                            </div>
+                            <hr>
+                            <h4 class="text-center">聯絡資訊</h4>
+                            <div class="m-3">
+                                <input type="text" class="form-control" placeholder="請輸入姓名">
+                            </div>
+                            <div class="m-3">
+                                <input type="tel" class="form-control" placeholder="請輸入電話">
+                            </div>
+                            <div class="m-3">
+                                <input type="text" class="form-control" placeholder="請輸入地址">
+                            </div>
+                            <div class="text-center">
+                                <button class="btn btn-primary" id="cartsubmit">確認送出</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="chat">
             <h4>疫世界機器人</h4>
             <div class="chat-box" ref="chat">
@@ -368,7 +416,8 @@
                 </template>
             </div>
             <div class="d-flex justify-content-between my-2">
-                <input type="text" class="form-control w-75" v-model="chat" @keyup.prevent.enter="go()" placeholder="請輸入您的問題">
+                <input type="text" class="form-control w-75" v-model="chat" @keyup.prevent.enter="go()"
+                    placeholder="請輸入您的問題">
                 <input type="submit" class="btn btn-secondary" value="送出" @click.prevent="go()">
             </div>
         </div>

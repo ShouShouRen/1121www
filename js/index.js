@@ -25,7 +25,15 @@ $(document).ready(function () {
             $('.gotop').removeClass('active');
         }
     })
-    $('.robot').click(function(){
+    $('.robot').click(function () {
         $('#chat').fadeToggle();
+    })
+    $('#cartsubmit').click(function () {
+        alert("感謝您的訂購，7日內將會抵達訂購地點。")
+        location.reload();
+    })
+    $('#contactsubmit').click(function () {
+        alert("感謝您的來信，客服會儘速回覆您！！！")
+        location.reload();
     })
 })

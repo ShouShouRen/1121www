@@ -61,9 +61,23 @@ Vue.createApp({
                     amountShow: 0,
                 },
             ],
-
+            chat: '',
+            input: [],
+            reply: [
+                '目前疫情嚴重疫世界關心您', '有需要什麼服務嗎？', '至聯絡我們會有專人為您服務'
+            ]
         }
-    },methods: {
-        
+    }, methods: {
+        addInput() {
+            this.input.push(this.chat)
+            this.chat = '';
+        },
+        h() {
+            this.$refs.chat.scrollTop = this.$refs.chat.scrollHeight + 100
+        },
+        async go() {
+            await this.addInput();
+            await this.h();
+        }
     }
 }).mount("#app");

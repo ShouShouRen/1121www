@@ -71,7 +71,7 @@ section {
 
 .title {
     color: transparent;
-    background: linear-gradient(125deg, var(--primary), var(--third), lightgreen);
+    background: linear-gradient(45deg, var(--primary), var(--third), lightgreen);
     -webkit-background-clip: text;
     font-size: 4.6em;
     font-weight: bold;
@@ -199,10 +199,12 @@ p {
     .about_para {
         font-size: 18px;
     }
-    h3{
+
+    h3 {
         color: var(--red);
     }
-    .ribbon{
+
+    .ribbon {
         position: absolute;
         top: -30px;
         right: 50px;
@@ -216,14 +218,44 @@ p {
         color: var(--third);
         font-size: 2em;
     }
-    .border-red{
+
+    .border-red {
         border-top: 4px solid var(--red);
         border-bottom: 4px solid var(--red);
     }
 }
-#news{
+
+#news {
     background-image: url('../img/news.png');
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
+
+    #newscarousel {
+        border-radius: 1em;
+        overflow: hidden;
+        border: 15px solid #eee;
+    }
+}
+
+#virus {
+    .border-third {
+        border: 4px solid var(--third);
+    }
+}
+#shop{
+    .ribbon{
+        width: 120px;
+        height: 40px;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background: #fff;
+        border-radius: 1em;
+        text-align: center;
+        color: var(--red);
+        font-size: 1.6em;
+        display: grid;
+        place-items: center;
+    }
 }

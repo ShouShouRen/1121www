@@ -22,6 +22,44 @@ Vue.createApp({
                     title: '疫苗種類',
                     para: '目前各地方醫院有WH疫苗新型WH-2仍在實驗階段',
                 },
+            ],
+            products: [
+                {
+                    title: '抗菌洗手乳',
+                    price: 200,
+                    img: './img/product-a.jpg',
+                    amountShow: 0,
+                },
+                {
+                    title: '一般醫療口罩',
+                    price: 180,
+                    img: './img/product-b.jpg',
+                    amountShow: 0,
+                },
+                {
+                    title: '特殊N95口罩',
+                    price: 50,
+                    img: './img/product-c.jpg',
+                    amountShow: 0,
+                },
+                {
+                    title: '滾筒衛生紙',
+                    price: 60,
+                    img: './img/product-d.jpg',
+                    amountShow: 0,
+                },
+                {
+                    title: '體溫計',
+                    price: 99,
+                    img: './img/product-e.jpg',
+                    amountShow: 0,
+                },
+                {
+                    title: '冷凍健康餐',
+                    price: 160,
+                    img: './img/product-f.jpg',
+                    amountShow: 0,
+                },
             ]
         }
     }

@@ -60,7 +60,10 @@ Vue.createApp({
                     img: './img/product-f.jpg',
                     amountShow: 0,
                 },
-            ]
+            ],
+
         }
+    },methods: {
+        
     }
 }).mount("#app");
